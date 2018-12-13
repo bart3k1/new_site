@@ -57,6 +57,3 @@ print(s)
 #     translated = translator.translate("dupa")
 #     print(i)
 #     print(translated.text)
-
-
-
