@@ -48,7 +48,7 @@ for file in os.listdir(directory):
             if line.startswith(tag_list):
                 start_char = line.find(':')
                 print(start_char)
-                title_list.append(line[7:]) #check if all stats at 7th todo
+                title_list.append(line[7:]) #check if all starts at 7th todo
                 # TRANSLATIONS LIMIT todo
                 # translation = translator.translate(line)
                 # translated_title_list.append(translation)
@@ -66,11 +66,13 @@ for file in os.listdir(directory):
     #  move done file -> used todo
     # shutil.move(directory + "/" + file, directory + "/used/" + file)
 
-a = 0
-for i in title_list:
-    print(i)
-    print(file_list[a])
-    a += 1
+
+# print
+# a = 0
+# for i in title_list:
+#     print(i)
+#     print(file_list[a])
+#     a += 1
 
 
 
