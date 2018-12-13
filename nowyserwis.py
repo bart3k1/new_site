@@ -8,7 +8,7 @@ from py_translator import Translator
 chrome_path = '/usr/bin/google-chrome %s'
 
 # set directory
-directory = "/home/satq/Documents/Pythony/NowySerwis/doce"
+directory = "/home/satq/Documents/Pythony/new_site/doce"
 
 # set list of title tags
 tag_list = ("T: ", "Title:", "Tytuł:")
@@ -35,7 +35,7 @@ for file in os.listdir(directory):
     else:
         continue
 
-# print(title_list)
+print(title_list)
 
 # translate - webpage
 
@@ -50,8 +50,8 @@ for file in os.listdir(directory):
 # translated = translator.translate("dupa", dest='en')
 # print(translated.text)
 
-s = Translator().translate('Hello my friend', dest='es').text
-print(s)
+# s = Translator().translate('Hello my friend', dest='es').text
+# print(s)
 
 # for i in title_list:
 #     translated = translator.translate("dupa")
