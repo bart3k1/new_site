@@ -68,11 +68,11 @@ for file in os.listdir(directory):
 
 
 # print
-# a = 0
-# for i in title_list:
-#     print(i)
-#     print(file_list[a])
-#     a += 1
+a = 0
+for i in title_list:
+    print(i)
+    print(file_list[a])
+    a += 1
 
 
 

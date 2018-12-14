@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Flights
+{% endblock %}
+
+{% block body %}
+    <h1>Book a Flight</h1>
+
+                {% for article in articles %}
+                    {{ article.title }} to {{ flight.destination }}
+                {% endfor %}
+
+{% endblock %}
