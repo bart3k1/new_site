@@ -41,3 +41,7 @@ if __name__ == "__main__":
    FILE          TEXT     NOT NULL,
    TRANSLATION        TEXT NOT NULL
 );
+
+
+INSERT INTO articles (title, file, translation)
+VALUES ('test', 'test', 'test');
