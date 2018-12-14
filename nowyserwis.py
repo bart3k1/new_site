@@ -1,6 +1,9 @@
 import docx2txt
 import os
 from translate.translate import Translator
+import csv
+import shutil
+
 
 # import webbrowser
 
@@ -32,6 +35,15 @@ try:
 except:
     os.mkdir(directory + '/used')
 
+#set csv file
+
+myFile = open('spis.csv', 'w')
+with myFile:
+    myFields = ['title', 'translation', 'file']
+    writer = csv.DictWriter(myFile, fieldnames=myFields)
+    writer.writeheader()
+myFile.close()
+
 # browse files
 for file in os.listdir(directory):
     filename = os.fsdecode(file)
@@ -46,12 +58,14 @@ for file in os.listdir(directory):
         # check for title add to title_list and translate_title_list
         for line in my_text_split:
             if line.startswith(tag_list):
-                start_char = line.find(':')
-                print(start_char)
-                title_list.append(line[7:]) #check if all starts at 7th todo
+                start_char = line.find(':') + 2
+                # print(start_char)
+                title_list.append(line[start_char:]) #check if all starts at 7th todo
                 # TRANSLATIONS LIMIT todo
-                # translation = translator.translate(line)
-                # translated_title_list.append(translation)
+                translation = translator.translate((line[start_char:]))
+                translated_title_list.append(translation)
+
+
 
 
     else:
@@ -63,16 +77,22 @@ for file in os.listdir(directory):
     f.write(file_list[-1] + "\n\n")
     f.close()
 
-    #  move done file -> used todo
+    myFile = open('spis.csv', 'a+')
+    with myFile:
+        writer = csv.DictWriter(myFile, fieldnames=myFields)
+        # writer.writeheader()
+        writer.writerow({'title': title_list[-1], 'translation': translated_title_list[-1], 'file': file_list[-1]})
+
+    # move done file -> used todo
     # shutil.move(directory + "/" + file, directory + "/used/" + file)
 
 
 # print
-a = 0
-for i in title_list:
-    print(i)
-    print(file_list[a])
-    a += 1
+# a = 0
+# for i in title_list:
+#     print(i)
+#     print(file_list[a])
+#     a += 1
 
 
 

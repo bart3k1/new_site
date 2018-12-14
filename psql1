@@ -36,7 +36,7 @@ if __name__ == "__main__":
 
 
     CREATE TABLE articles(
-   ID INT PRIMARY KEY     NOT NULL,
+   ID SERIAL PRIMARY KEY     NOT NULL,
    TITLE           TEXT    NOT NULL,
    FILE          TEXT     NOT NULL,
    TRANSLATION        TEXT NOT NULL
@@ -45,3 +45,10 @@ if __name__ == "__main__":
 
 INSERT INTO articles (title, file, translation)
 VALUES ('test', 'test', 'test');
+
+
+CREATE TABLE link (
+ link_id serial PRIMARY KEY,
+ title VARCHAR (512) NOT NULL,
+ url VARCHAR (1024) NOT NULL UNIQUE
+);
