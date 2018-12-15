@@ -63,7 +63,9 @@ for file in os.listdir(directory):
                 title_list.append(line[start_char:]) #check if all starts at 7th todo
                 # TRANSLATIONS LIMIT todo
                 translation = translator.translate((line[start_char:]))
-                translated_title_list.append(translation)
+                translated_title_list.append(translation) #.split(" ")
+        # move done file -> used todo
+        shutil.move(directory + "/" + file, directory + "/used/" + file)
 
 
 
@@ -83,8 +85,7 @@ for file in os.listdir(directory):
         # writer.writeheader()
         writer.writerow({'title': title_list[-1], 'translation': translated_title_list[-1], 'file': file_list[-1]})
 
-    # move done file -> used todo
-    # shutil.move(directory + "/" + file, directory + "/used/" + file)
+
 
 
 # print

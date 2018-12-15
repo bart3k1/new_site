@@ -10,9 +10,16 @@
 
                 {% for article in articles[1:] %}
                     {{ article.title }}<br>
-                    {{ article.translation }} <br>
-                    <a target="_blank" rel="noopener noreferrer" href="https://www.gettyimages.com/">
-                        Getty >>> </a><br>
+
+
+
+                    {% set list = article.translation.split(' ') %}
+                        {% for i in list %}
+
+                            <a href="https://www.gettyimages.com/photos/{{i}}?license=rf&phrase={{i}}&sort=best#license"> {{ i }} </a>
+
+                        {% endfor %} <br>
+
                     {{ article.file }}<br>
                     - - - - - <br>
                 {% endfor %}
