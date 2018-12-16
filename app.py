@@ -11,6 +11,7 @@ engine = create_engine('postgresql://postgres:xxx@localhost:5432/artykuly')
 # engine = create_engine(os.getenv("PSQL_MYDB_URL"))
 db = scoped_session(sessionmaker(bind=engine))
 
+
 @app.route("/")
 def index():
     articles = db.execute("SELECT * FROM articles").fetchall()

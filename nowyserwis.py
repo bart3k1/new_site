@@ -4,9 +4,7 @@ from translate.translate import Translator
 import csv
 import shutil
 
-
 # import webbrowser
-
 
 
 # set chrome path
@@ -35,7 +33,7 @@ try:
 except:
     os.mkdir(directory + '/used')
 
-#set csv file
+# set csv file
 
 myFile = open('spis.csv', 'w')
 with myFile:
@@ -60,10 +58,10 @@ for file in os.listdir(directory):
             if line.startswith(tag_list):
                 start_char = line.find(':') + 2
                 # print(start_char)
-                title_list.append(line[start_char:]) #check if all starts at 7th todo
+                title_list.append(line[start_char:])  # check if all starts at 7th todo
                 # TRANSLATIONS LIMIT todo
                 translation = translator.translate((line[start_char:]))
-                translated_title_list.append(translation) #.split(" ")
+                translated_title_list.append(translation)  # .split(" ")
         # move done file -> used todo
         shutil.move(directory + "/" + file, directory + "/used/" + file)
 
@@ -85,18 +83,9 @@ for file in os.listdir(directory):
         # writer.writeheader()
         writer.writerow({'title': title_list[-1], 'translation': translated_title_list[-1], 'file': file_list[-1]})
 
-
-
-
 # print
 # a = 0
 # for i in title_list:
 #     print(i)
 #     print(file_list[a])
 #     a += 1
-
-
-
-
-
-

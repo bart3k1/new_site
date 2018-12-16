@@ -1,29 +1,28 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Artykuły do hejtso
+Artykuły do hejtso
 {% endblock %}
 
 {% block body %}
-    <h1>Lista artykułów</h1>
+<h1>Lista artykułów</h1>
 <h2>- - - - - - - -</h2>
 
-                {% for article in articles[1:] %}
-                    {{ article.title }}<br>
+{% for article in articles[1:] %}
+{{ article.title }}<br>
 
 
+{% set list = article.translation.split(' ') %}
+{% for i in list %}
 
-                    {% set list = article.translation.split(' ') %}
-                        {% for i in list %}
+<a target="_blank" rel="noopener noreferrer"
+   href="https://www.gettyimages.com/photos/{{i}}?license=rf&phrase={{i}}&sort=best#license"> {{ i }} </a>
 
-                            <a target="_blank" rel="noopener noreferrer" href="https://www.gettyimages.com/photos/{{i}}?license=rf&phrase={{i}}&sort=best#license"> {{ i }} </a>
+{% endfor %} <br>
 
-                        {% endfor %} <br>
-
-                    {{ article.file }}<br>
-                    - - - - - <br>
-                {% endfor %}
-
+{{ article.file }}<br>
+- - - - - <br>
+{% endfor %}
 
 
 {% endblock %}
