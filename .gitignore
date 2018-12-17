@@ -7,7 +7,7 @@ __pycache__/
 *.so
 
 # Distribution / packaging
-psql1.txt
+psql1
 plan.txt
 spis.txt
 spis.csv
