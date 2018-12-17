@@ -8,28 +8,33 @@
 
     <h1>Lista artykułów</h1>
     <h2>- - - - - - - -</h2>
+<div class="text">
 
 {% for article in articles[1:] %}
     {% set lista = article.title.split(' ') %}
+        <!--X-NEWS-->
         {% for i in lista %}
             <a target="_blank" rel="noopener noreferrer" href="https://x-news.pl/search/?phrase={{i}}">
-                {{ i }}
+                <!--<button type="button" class="btn btn-secondary"> {{ i }} </button>-->
+                {{i}}
             </a>
         {% endfor %} <br>
 
 
     {% set list = article.translation.split(' ') %}
+    <!--GETTY-->
         {% for i in list %}
             <a target="_blank" rel="noopener noreferrer"
                 href="https://www.gettyimages.com/photos/{{i}}?license=rf&phrase={{i}}&sort=best#license">
-                    {{ i }}
+                    <!--<button type="button" class="btn btn-success"> {{ i }} </button>-->
+                {{i}}
             </a>
         {% endfor %} <br>
 
     {{ article.file }}<br>
 
-    <button onclick="copyToClipboard('#p{{article.id}}')">
-        <a target="_blank" rel="noopener noreferrer"
+    <button type="button" class="btn btn-light" onclick="copyToClipboard('#p{{article.id}}')">
+        <a target="_blank" rel="noopener noreferrer" color="white"
            href="https://admin.dziendobry.tvn.pl/content/articles">
                 DO HEJTSO >>>
         </a>
@@ -43,6 +48,8 @@
 
 {% endfor %}
 
+
+    </div>
 {% endblock %}
 
 
