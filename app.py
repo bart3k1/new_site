@@ -32,5 +32,3 @@ def upload_file1():
             print(line)
         f.close()
         return 'file uploaded successfully'
-
-# testing

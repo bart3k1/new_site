@@ -1,48 +1,47 @@
 {% extends "layout.html" %}
 
 {% block title %}
-Artykuły do hejtso
+    Artykuły do hejtso
 {% endblock %}
 
 {% block body %}
 
-
-<h1>Lista artykułów</h1>
-<h2>- - - - - - - -</h2>
+    <h1>Lista artykułów</h1>
+    <h2>- - - - - - - -</h2>
 
 {% for article in articles[1:] %}
-{% set lista = article.title.split(' ') %}
-{% for i in lista %}
-<a target="_blank" rel="noopener noreferrer"
-   href="https://x-news.pl/search/?phrase={{i}}">
+    {% set lista = article.title.split(' ') %}
+        {% for i in lista %}
+            <a target="_blank" rel="noopener noreferrer" href="https://x-news.pl/search/?phrase={{i}}">
+                {{ i }}
+            </a>
+        {% endfor %} <br>
 
 
-    {{ i }} </a>
-{% endfor %} <br>
+    {% set list = article.translation.split(' ') %}
+        {% for i in list %}
+            <a target="_blank" rel="noopener noreferrer"
+                href="https://www.gettyimages.com/photos/{{i}}?license=rf&phrase={{i}}&sort=best#license">
+                    {{ i }}
+            </a>
+        {% endfor %} <br>
 
+    {{ article.file }}<br>
 
-{% set list = article.translation.split(' ') %}
-{% for i in list %}
+    <button onclick="copyToClipboard('#p{{article.id}}')">
+        <a target="_blank" rel="noopener noreferrer"
+           href="https://admin.dziendobry.tvn.pl/content/articles">
+                DO HEJTSO >>>
+        </a>
+    </button>
 
-<a target="_blank" rel="noopener noreferrer"
-   href="https://www.gettyimages.com/photos/{{i}}?license=rf&phrase={{i}}&sort=best#license"> {{ i }} </a>
+        <span id="p{{article.id}}">
+            {{ article.title }} </a>
+        </span> <br>
 
-
-{% endfor %} <br>
-
-{{ article.file }}<br>
-
-
-<button onclick="copyToClipboard('#p{{article.id}}')"><a target="_blank" rel="noopener noreferrer"
-                                                         href="https://admin.dziendobry.tvn.pl/content/articles"> DO
-    HEJTSO >>></a></button> <span id="p{{article.id}}">
-    {{ article.title }} </a>
-</span><br>
-- - - - - <br>
-
+    - - - - - <br>
 
 {% endfor %}
-
 
 {% endblock %}
 
