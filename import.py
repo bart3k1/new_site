@@ -10,6 +10,7 @@ db = scoped_session(sessionmaker(bind=engine))
 
 
 def main():
+    db.execute("truncate articles")
     f = open("spis.csv")
     reader = csv.reader(f)
     for title, translation, file in reader:
