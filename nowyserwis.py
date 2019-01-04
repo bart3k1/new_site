@@ -1,11 +1,8 @@
-import docx2txt
-import os
-from translate.translate import Translator
 import csv
+import docx2txt
 import shutil
-
-# import webbrowser
-
+from translate.translate import Translator
+import os
 
 # set chrome path
 chrome_path = '/usr/bin/google-chrome %s'
@@ -46,18 +43,15 @@ myFile.close()
 for file in os.listdir(directory):
     filename = os.fsdecode(file)
     if filename.endswith(".docx"):
-        # file_list.append((directory + "/used/" + filename))
         file_list.append(filename)
-        # read .docx files
         my_text = docx2txt.process(directory + "/" + file)
-        my_text_XXX = my_text.replace('\n', 'XXX')
+        my_text_XXX = my_text.replace('\n', 'XXX')  # todo split on \n
         my_text_split = my_text_XXX.split('XXX')
 
         # check for title add to title_list and translate_title_list
         for line in my_text_split:
             if line.startswith(tag_list):
                 start_char = line.find(':') + 2
-                # print(start_char)
                 title_list.append(line[start_char:])  # check if all starts at 7th todo
                 # TRANSLATIONS LIMIT todo
                 translation = translator.translate((line[start_char:]))
@@ -73,19 +67,10 @@ for file in os.listdir(directory):
 
     f = open("spis.txt", "a+")
     f.write(title_list[-1] + "\n")
-    # f.write(translated_title_list[-1] + "\n")
     f.write(file_list[-1] + "\n\n")
     f.close()
 
     myFile = open('spis.csv', 'a+')
     with myFile:
         writer = csv.DictWriter(myFile, fieldnames=myFields)
-        # writer.writeheader()
         writer.writerow({'title': title_list[-1], 'translation': translated_title_list[-1], 'file': file_list[-1]})
-
-# print
-# a = 0
-# for i in title_list:
-#     print(i)
-#     print(file_list[a])
-#     a += 1

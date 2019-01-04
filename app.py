@@ -3,7 +3,6 @@ import os
 from flask import Flask, render_template, request
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
-from werkzeug import secure_filename
 
 app = Flask(__name__)
 
@@ -34,7 +33,6 @@ def upload_file():
 def upload_file1():
     if request.method == 'POST':
         f = request.files['file']
-        # f = open('masters.txt')
         for line in f:
             print(line)
         f.close()

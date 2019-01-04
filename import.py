@@ -1,5 +1,4 @@
 import csv
-import os
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -16,7 +15,6 @@ def main():
     for title, translation, file in reader:
         db.execute("INSERT INTO articles (title, translation, file) VALUES (:title, :translation, :file)",
                    {"title": title, "translation": translation, "file": file})
-        # print(f"Added flight from {origin} to {destination} lasting {duration} minutes.")
     db.commit()
 
 
