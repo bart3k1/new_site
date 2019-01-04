@@ -22,9 +22,8 @@
         {% endfor %} <br>
     </div>
 
-    <div class="lista">
-    {% set list = article.translation.split(' ') %}
-    </div>
+        {% set list = article.translation.split(' ') %}
+
 
     <!--GETTY-->
     <div class="lista">
@@ -36,7 +35,9 @@
             </a>
         {% endfor %} <br>
     </div>
+    <div class="lista">
     {{ article.file }}<br>
+    </div>
     <div class="lista">
     <button type="button" class="btn btn-light" onclick="copyToClipboard('#p{{article.id}}')">
         <a target="_blank" rel="noopener noreferrer" color="white"

@@ -18,8 +18,15 @@ def index():
     return render_template("index.html", articles=articles)
 
 
-@app.route('/upload')
+@app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
+    if request.method == 'POST':
+        f = request.form.getlist("file_list[]")
+        for i in f:
+            for line in i:
+                print(line)
+        return 'file uploaded successfully'
+
     return render_template('upload.html')
 
 
