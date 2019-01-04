@@ -13,16 +13,18 @@
 {% for article in articles[1:] %}
     {% set lista = article.title.split(' ') %}
         <!--X-NEWS-->
+    <div class="lista">
         {% for i in lista %}
             <a target="_blank" rel="noopener noreferrer" href="https://x-news.pl/search/?phrase={{i}}">
                 <!--<button type="button" class="btn btn-secondary"> {{ i }} </button>-->
                 {{i}}
             </a>
         {% endfor %} <br>
-
+    </div>
 
     {% set list = article.translation.split(' ') %}
     <!--GETTY-->
+    <div class="lista">
         {% for i in list %}
             <a target="_blank" rel="noopener noreferrer"
                 href="https://www.gettyimages.com/photos/{{i}}?license=rf&phrase={{i}}&sort=best#license">
@@ -30,9 +32,9 @@
                 {{i}}
             </a>
         {% endfor %} <br>
-
+    </div>
     {{ article.file }}<br>
-
+    <div class="lista">
     <button type="button" class="btn btn-light" onclick="copyToClipboard('#p{{article.id}}')">
         <a target="_blank" rel="noopener noreferrer" color="white"
            href="https://admin.dziendobry.tvn.pl/content/articles">
@@ -40,7 +42,7 @@
         </a>
     </button>
     <span id="p{{article.id}}">{{article.title}}</a></span> <br>
-
+    </div>
     - - - - - <br>
 
 {% endfor %}
