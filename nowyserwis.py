@@ -8,7 +8,7 @@ import os
 chrome_path = '/usr/bin/google-chrome %s'
 
 # set directory
-directory = "/home/satq/Documents/Pythony/new_site/doce"
+directory = "/home/satq/Documents/new_site/doce"
 
 # set list of title tags
 tag_list = ("T: ", "Title:", "Tytuł:")
